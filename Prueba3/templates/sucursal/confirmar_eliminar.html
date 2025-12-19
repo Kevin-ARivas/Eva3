@@ -1,0 +1,19 @@
+{% extends 'index.html' %}
+{% block title %}Eliminar Sucursal{% endblock %}
+{% block content %}
+
+<div class="alert alert-danger shadow">
+    <h3>Confirmar eliminación</h3>
+    <p>
+        ¿Estás seguro de que deseas eliminar la sucursal
+        <strong>{{ sucursal.nombre }}</strong>?
+    </p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a href="{% url 'sucursal_listar' %}" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+{% endblock %}

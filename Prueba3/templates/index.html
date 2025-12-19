@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Sistema Académico{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap 5 -->
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
+    <div class="container-fluid">
+
+        <a class="navbar-brand" href="{% url 'sucursal_listar' %}">
+            Sistema Académico
+        </a>
+
+        <button class="navbar-toggler" type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarColor01"
+                aria-controls="navbarColor01"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarColor01">
+            <ul class="navbar-nav me-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'sucursal_listar' %}">
+                        Sucursales
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'curso_listar' %}">
+                        Cursos
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'alumno_listar' %}">
+                        Alumnos
+                    </a>
+                </li>
+
+                <!-- 🔥 AQUÍ ESTÁ MATRÍCULA (LO QUE FALTABA) -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'matricula_listar' %}">
+                        Matrículas
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    {% block content %}{% endblock %}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
