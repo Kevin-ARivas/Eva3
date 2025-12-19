@@ -6,11 +6,10 @@ from .models import Sucursal, Matricula, Curso, Alumno
 class SucursalForm(forms.ModelForm):
     class Meta:
         model = Sucursal
-        fields = ['nombre', 'direccion', 'telefono']
+        fields = ['nombre', 'ciudad']
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),
-            'direccion': forms.TextInput(attrs={'class': 'form-control'}),
-            'telefono': forms.NumberInput(attrs={'class': 'form-control'}),
+            'ciudad': forms.NumberInput(attrs={'class': 'form-control'}),
         }
 
 
@@ -19,15 +18,10 @@ class SucursalForm(forms.ModelForm):
 class CursoForm(forms.ModelForm):
     class Meta:
         model = Curso
-        fields = ['nombre', 'codigo', 'descripcion', 'sucursal']
+        fields = ['nombre', 'valor']
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),
-            'codigo': forms.TextInput(attrs={'class': 'form-control'}),
-            'descripcion': forms.Textarea(attrs={
-                'class': 'form-control',
-                'rows': 4
-            }),
-            'sucursal': forms.Select(attrs={'class': 'form-control'}),
+            'valor': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
 
@@ -36,11 +30,15 @@ class CursoForm(forms.ModelForm):
 class AlumnoForm(forms.ModelForm):
     class Meta:
         model = Alumno
-        fields = ['nombre', 'email', 'rut']
+        fields = ['rut','nombre', 'apellido_paterno', 'apellido_materno', 'direccion', 'email', 'fono']
         widgets = {
-            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
-            'email': forms.EmailInput(attrs={'class': 'form-control'}),
             'rut': forms.TextInput(attrs={'class': 'form-control'}),
+            'nombre': forms.EmailInput(attrs={'class': 'form-control'}),
+            'apellido_paterno': forms.TextInput(attrs={'class': 'form-control'}),
+            'apellido_materno': forms.TextInput(attrs={'class': 'form-control'}),
+            'direccion': forms.TextInput(attrs={'class': 'form-control'}),
+            'email': forms.TextInput(attrs={'class': 'form-control'}),
+            'fono': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
 
@@ -49,9 +47,10 @@ class AlumnoForm(forms.ModelForm):
 class MatriculaForm(forms.ModelForm):
     class Meta:
         model = Matricula
-        fields = ['alumno', 'curso', 'estado']
+        fields = ['curso', 'alumno', 'sucursal', 'fecha']
         widgets = {
-            'alumno': forms.Select(attrs={'class': 'form-control'}),
             'curso': forms.Select(attrs={'class': 'form-control'}),
-            'estado': forms.Select(attrs={'class': 'form-control'}),
+            'alumno': forms.Select(attrs={'class': 'form-control'}),
+            'sucursal': forms.Select(attrs={'class': 'form-control'}),
+            'fecha': forms.Select(attrs={'class': 'form-control'}),
         }
