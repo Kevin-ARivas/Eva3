@@ -23,14 +23,16 @@ urlpatterns = [
     # -------------------------
     # Sucursal
     # -------------------------
-    path('', views.sucursal_listar, name='sucursal_listar'),
+    path('', views.home, name='home'),
+    path('sucursal', views.sucursal_listar, name='sucursal_listar'),
     path('sucursal/nueva/', views.sucursal_crear, name='sucursal_crear'),
     path('sucursal/editar/<int:pk>/', views.sucursal_editar, name='sucursal_editar'),
     path('sucursal/eliminar/<int:pk>/', views.sucursal_eliminar, name='sucursal_eliminar'),
-
+    path('sucursal/matriculas/<int:sucursal_id>/', views.matriculas_por_sucursal, name='sucursal_matriculas'),
     # -------------------------
     # Curso
     # -------------------------
+    path('curso/alumnos/<int:curso_id>', views.alumnos_por_curso, name='alumnos_curso'),
     path('curso/', views.curso_listar, name='curso_listar'),
     path('curso/nuevo/', views.curso_crear, name='curso_crear'),
     path('curso/editar/<int:pk>/', views.curso_editar, name='curso_editar'),
@@ -43,7 +45,7 @@ urlpatterns = [
     path('alumno/nuevo/', views.alumno_crear, name='alumno_crear'),
     path('alumno/editar/<int:pk>/', views.alumno_editar, name='alumno_editar'),
     path('alumno/eliminar/<int:pk>/', views.alumno_eliminar, name='alumno_eliminar'),
-    path('alumno/<int:pk>/detalle/', views.alumno_detalle, name='alumno_detalle'),
+
 
     # -------------------------
     # Matrícula
@@ -52,4 +54,5 @@ urlpatterns = [
     path('matricula/nueva/', views.matricula_crear, name='matricula_crear'),
     path('matricula/editar/<int:pk>/', views.matricula_editar, name='matricula_editar'),
     path('matricula/eliminar/<int:pk>/', views.matricula_eliminar, name='matricula_eliminar'),
+
 ]

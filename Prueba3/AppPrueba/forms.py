@@ -9,7 +9,7 @@ class SucursalForm(forms.ModelForm):
         fields = ['nombre', 'ciudad']
         widgets = {
             'nombre': forms.TextInput(attrs={'class': 'form-control'}),
-            'ciudad': forms.NumberInput(attrs={'class': 'form-control'}),
+            'ciudad': forms.TextInput(attrs={'class': 'form-control'}),
         }
 
 
@@ -33,7 +33,7 @@ class AlumnoForm(forms.ModelForm):
         fields = ['rut','nombre', 'apellido_paterno', 'apellido_materno', 'direccion', 'email', 'fono']
         widgets = {
             'rut': forms.TextInput(attrs={'class': 'form-control'}),
-            'nombre': forms.EmailInput(attrs={'class': 'form-control'}),
+            'nombre': forms.TextInput(attrs={'class': 'form-control'}),
             'apellido_paterno': forms.TextInput(attrs={'class': 'form-control'}),
             'apellido_materno': forms.TextInput(attrs={'class': 'form-control'}),
             'direccion': forms.TextInput(attrs={'class': 'form-control'}),
@@ -52,5 +52,5 @@ class MatriculaForm(forms.ModelForm):
             'curso': forms.Select(attrs={'class': 'form-control'}),
             'alumno': forms.Select(attrs={'class': 'form-control'}),
             'sucursal': forms.Select(attrs={'class': 'form-control'}),
-            'fecha': forms.Select(attrs={'class': 'form-control'}),
+            'fecha': forms.DateInput(attrs={'class': 'form-control', 'type': 'date'}),
         }

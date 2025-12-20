@@ -12,31 +12,33 @@
 <table class="table table-striped table-hover">
     <thead class="table-dark">
         <tr>
-            <th>ID</th>
+            <th>Codigo</th>
             <th>Nombre</th>
-            <th>Dirección</th>
-            <th>Teléfono</th>
+            <th>Ciudad</th>
             <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
     {% for sucursal in sucursales %}
-        <tr>
-            <td>{{ sucursal.id }}</td>
-            <td>{{ sucursal.nombre }}</td>
-            <td>{{ sucursal.direccion }}</td>
-            <td>{{ sucursal.telefono }}</td>
-            <td>
-                <a href="{% url 'sucursal_editar' sucursal.id %}"
-                   class="btn btn-warning btn-sm">
-                    Editar
-                </a>
-                <a href="{% url 'sucursal_eliminar' sucursal.id %}"
-                   class="btn btn-danger btn-sm">
-                    Eliminar
-                </a>
-            </td>
-        </tr>
+            <tr>
+                <td>{{ sucursal.codigo }}</td>
+                <td>
+                    <a href="{% url 'sucursal_matriculas' sucursal.codigo %}">
+                    {{ sucursal.nombre }}
+                    </a>
+                </td>
+                <td>{{ sucursal.ciudad }}</td>
+                <td>
+                    <a href="{% url 'sucursal_editar' sucursal.codigo %}"
+                    class="btn btn-warning btn-sm">
+                        Editar
+                    </a>
+                    <a href="{% url 'sucursal_eliminar' sucursal.codigo %}"
+                    class="btn btn-danger btn-sm">
+                        Eliminar
+                    </a>
+                </td>
+            </tr>
     {% empty %}
         <tr>
             <td colspan="5" class="text-center">

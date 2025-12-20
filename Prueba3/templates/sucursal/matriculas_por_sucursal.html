@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+{% block title %}Matrículas por Sucursal{% endblock %}
+{% block content %}
+
+<div class="card shadow">
+    <div class="card-body">
+
+        <h2 class="card-title mb-4">
+            Sucursal: {{ sucursal.nombre }} ({{ sucursal.ciudad }})
+        </h2>
+
+        <table class="table table-striped table-hover">
+            <thead class="table-dark">
+                <tr>
+                    <th>Alumno</th>
+                    <th>Curso</th>
+                    <th>Fecha</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for matricula in matriculas %}
+                <tr>
+                    <td>
+                        {{ matricula.alumno.nombre }}
+                        {{ matricula.alumno.apellido_paterno }}
+                    </td>
+                    <td>{{ matricula.curso.nombre }}</td>
+                    <td>{{ matricula.fecha }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">No hay matrículas registradas en esta sucursal.</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+</div>
+
+{% endblock %}

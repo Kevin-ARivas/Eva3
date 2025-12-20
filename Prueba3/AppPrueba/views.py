@@ -158,27 +158,25 @@ def matricula_editar(request, pk):
 
 #-----------------------------------#
 def alumnos_por_curso(request, curso_id):
-    curso = get_object_or_404(Curso, pk=curso_id)
-    matriculas = Matricula.objects.filter(curso=curso).select_related("alumno")
+    curso = get_object_or_404(Curso, codigo=curso_id)
+    matriculas = Matricula.objects.filter(curso=curso).select_related('alumno')
 
-    return render(request, "curso/alumnos_por_curso.html", {
-        "curso": curso,
-        "matriculas": matriculas
+    return render(request, 'curso/alumnos_curso.html', {
+        'curso': curso,
+        'matriculas': matriculas
+    })
+    
+def matriculas_por_sucursal(request, sucursal_id):
+    sucursal = get_object_or_404(Sucursal, codigo=sucursal_id)
+    
+    matriculas = Matricula.objects.filter(
+        sucursal=sucursal
+    ).select_related('alumno', 'curso')
+
+    return render(request, 'sucursal/matriculas_por_sucursal.html', {
+        'sucursal': sucursal,
+        'matriculas': matriculas
     })
 
-def alumno_detalle(request, pk):
-    alumno = get_object_or_404(Alumno, pk=pk)
-
-    cursos = Curso.objects.filter(
-        matriculas__alumno=alumno
-    )
-
-    return render(
-        request,
-        "alumno/detalle.html",
-        {
-            "alumno": alumno,
-            "cursos": cursos
-        }
-    )
-
+def home(request):
+    return render(request, "home.html")

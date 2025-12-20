@@ -13,7 +13,8 @@ class Curso(models.Model):
     nombre = models.CharField(max_length=120)
     codigo = models.AutoField(primary_key=True)
     valor = models.IntegerField()
-    def __str__(self):
+    
+    def __str__(self):    
         return self.nombre
 
 class Alumno(models.Model):

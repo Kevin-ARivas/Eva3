@@ -12,32 +12,36 @@
 <table class="table table-striped table-hover">
     <thead class="table-dark">
         <tr>
-            <th>ID</th>
+            <th>Rut</th>
             <th>Nombre</th>
+            <th>Apellido Paterno</th>
+            <th>Apellido Materno</th>
+            <th>Direccion</th>
             <th>Email</th>
+            <th>Fono</th>
             <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
     {% for alumno in alumnos %}
         <tr>
-            <td>
-                <a href="{% url 'alumno_detalle' alumno.id %}">
-                    {{ alumno.id }}
-                </a>
-            </td>
-            <td>{{ alumno.nombre }}</td>
-            <td>{{ alumno.email }}</td>
-            <td>
-                <a href="{% url 'alumno_editar' alumno.id %}"
-                   class="btn btn-warning btn-sm">
-                    Editar
-                </a>
-                <a href="{% url 'alumno_eliminar' alumno.id %}"
-                   class="btn btn-danger btn-sm">
-                    Eliminar
-                </a>
-            </td>
+                <td> {{ alumno.rut }} </td>
+                <td>{{ alumno.nombre }}</td>
+                <td>{{ alumno.apellido_paterno }}</td>
+                <td>{{ alumno.apellido_materno }}</td>
+                <td>{{ alumno.direccion }}</td>
+                <td>{{ alumno.email }}</td>
+                <td>{{ alumno.fono }}</td>
+                <td>
+                    <a href="{% url 'alumno_editar' alumno.rut %}"
+                    class="btn btn-warning btn-sm">
+                        Editar
+                    </a>
+                    <a href="{% url 'alumno_eliminar' alumno.rut %}"
+                    class="btn btn-danger btn-sm">
+                        Eliminar
+                    </a>
+                </td>
         </tr>
     {% empty %}
         <tr>
